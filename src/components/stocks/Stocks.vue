@@ -1,7 +1,9 @@
 <template>
     <div class="row">
-        <h1>Stocks</h1>
-        <app-stock v-for="(stock, index) in stocks" :key="index" :stock="stock"></app-stock>
+        <div class="card-panel clearfix">
+            <h1>Stocks</h1>
+            <app-stock v-for="(stock, index) in stocks" :key="index" :stock="stock"></app-stock>
+        </div>
     </div>
 </template>
 
@@ -24,5 +26,14 @@
 </script>
 
 <style>
-
+    .card-panel {
+        clear:both;
+    }
+    .clearfix:after {
+        content: " "; /* Older browser do not support empty content */
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both;
+    }
 </style>

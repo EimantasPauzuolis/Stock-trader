@@ -5,7 +5,7 @@
         <!-- Modal Structure -->
         <div :id="settings.id" class="modal">
             <div class="modal-content">
-                <h5>{{ settings.message}}</h5>
+                <h5>{{settings.action + ' ' + settings.quantity + '?'}}</h5>
             </div>
             <div class="modal-footer center-align">
                 <a href="#" class="modal-action modal-close waves-effect waves-green btn" @click="confirm">Yes</a>

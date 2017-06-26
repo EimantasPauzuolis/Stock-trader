@@ -12,7 +12,7 @@
                             <li><a href="#!">Save</a></li>
                             <li><a href="#!">Load</a></li>
                         </ul>
-                        <li><a class="btn">End day</a></li>
+                        <li><a class="btn" @click="endDay">End day</a></li>
                     </ul>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <router-link tag="li" to="/" class="tab" activeClass="active" exact><a class="black-text">Home</a></router-link>
                 <router-link tag="li" to="/portfolio" class="tab" activeClass="active"><a class="black-text">Portfolio</a></router-link>
                 <router-link tag="li" to="/stocks" class="tab" activeClass="active"><a class="black-text">Stocks</a></router-link>
-                <li class="right tab valign-wrapper"><span class="black-text"> {{ funds }} <i class="fa fa-money" aria-hidden="true"></i></span></li>
+                <li class="right tab valign-wrapper"><span class="chip teal lighten-2 white-text">Credits:  ${{ funds }} </span></li>
             </ul>
 
         </div>
@@ -31,6 +31,7 @@
 
 <script>
     import { mapGetters } from 'vuex';
+    import { mapActions } from 'vuex'
     export default {
         data () {
             return {
@@ -51,15 +52,22 @@
             ]),
         },
         methods: {
-            getWindowWidth(event) {
+            ...mapActions([
+                'randomizeStocks'
+            ]),
+            getWindowWidth (event) {
                 this.windowWidth = document.documentElement.clientWidth;
+            },
+            endDay () {
+                this.randomizeStocks();
             }
         },
         created () {
             $(".dropdown-button").dropdown();
             $('ul.tabs').tabs();
 
-        }
+        },
+
     }
 </script>
 
@@ -87,7 +95,7 @@
     }
 
     li span {
-        margin-right: 50px;
+        margin-right: 20px;
         font-size: 20px;
     }
 </style>

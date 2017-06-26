@@ -1,8 +1,10 @@
 <template>
     <div class="row">
-        <h1>Portfolio</h1>
-        <p v-if="stockPortfolio.length <=0">You have no stocks right now.</p>
-        <app-stock v-for="(stock, index) in stockPortfolio" :key="index" :stock="stock"></app-stock>
+        <div class="card-panel clearfix">
+            <h1>Portfolio</h1>
+            <p v-if="stockPortfolio.length <=0">You have no stocks right now.</p>
+            <app-stock v-for="(stock, index) in stockPortfolio" :key="index" :stock="stock"></app-stock>
+        </div>
     </div>
 
 </template>
@@ -28,5 +30,11 @@
 </script>
 
 <style>
-
+    .clearfix:after {
+        content: " "; /* Older browser do not support empty content */
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both;
+    }
 </style>
